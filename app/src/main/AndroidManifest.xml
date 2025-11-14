@@ -12,6 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Foodigo">
         <activity
+            android:name=".DetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PayOutActivity"
+            android:exported="false"
+            android:label="@string/title_activity_pay_out"
+            android:theme="@style/Theme.Foodigo" />
+        <activity
             android:name=".fragment_home"
             android:exported="false" />
         <activity
@@ -28,9 +36,7 @@
             android:exported="false" />
         <activity
             android:name=".Splash_screen"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
