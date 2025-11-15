@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.foodigo.Fragment.HomeFragment
 import com.example.foodigo.databinding.ActivityMainBinding
 import com.example.foodigo.databinding.NotificationItemBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -26,5 +27,6 @@ class MainActivity : AppCompatActivity() {
         binding.notificationBell.setOnClickListener {
             val BottomSheetDialog= NotificationBottomFragment
         }
+
     }
 }

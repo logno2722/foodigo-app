@@ -31,6 +31,7 @@ class HomeFragment : Fragment() {
             val bottomSheetDialog= MenuBottomSheetFragment()
             bottomSheetDialog.show(parentFragmentManager,"Test")
         }
+
         return binding.root
     }
 

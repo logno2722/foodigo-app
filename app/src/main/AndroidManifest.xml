@@ -19,9 +19,7 @@
             android:exported="false"
             android:label="@string/title_activity_pay_out"
             android:theme="@style/Theme.Foodigo" />
-        <activity
-            android:name=".fragment_home"
-            android:exported="false" />
+
         <activity
             android:name=".ChooseLocationActivity"
             android:exported="true" />
@@ -36,16 +34,18 @@
             android:exported="false" />
         <activity
             android:name=".Splash_screen"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
+
         </activity>
     </application>
 
