@@ -1,6 +1,8 @@
 package com.example.user
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,39 +21,59 @@ class DetailsActivity : AppCompatActivity() {
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // --- 1. Retrieve ALL Data from the Intent ---
+        // --- Retrieve Data from Intent ---
         val foodName = intent.getStringExtra("menuItemName")
-        val foodPrice = intent.getStringExtra("menuItemPrice")
+        val foodPrice = intent.getStringExtra("menuItemPrice") // already in TK
         val foodImage = intent.getIntExtra("menuItemImage", 0)
-        val foodOwner = intent.getStringExtra("menuItemOwner")
+        val sellerEmail = intent.getStringExtra("sellerEmail")
 
-        // --- 2. Bind Retrieved Data to Views ---
+        // --- Bind Data to Views ---
         binding.detailFoodName.text = foodName
+        binding.detailFoodPrice.text = foodPrice
         binding.detailFoodImage.setImageResource(foodImage)
-        // Assuming your layout has TextViews for Price and Owner,
-        // you would bind them here. For example:
-        // binding.detailPrice.text = foodPrice
-        // binding.detailOwnerName.text = foodOwner
 
+        // --- Back Button ---
+        binding.backButton.setOnClickListener { onBackPressed() }
 
-        // --- 3. Set up Click Listeners ---
-
-        // Back button: go to previous screen
-        binding.backButton.setOnClickListener {
-            onBackPressed()
-        }
-
-        // Add To Cart button: show a toast
+        // --- Add To Cart ---
         binding.addToCart.setOnClickListener {
-            // Use the retrieved foodName in the toast message
             Toast.makeText(this, "$foodName added to cart", Toast.LENGTH_SHORT).show()
         }
 
-        // Optional: handle system window insets for edge-to-edge
+        // --- View Seller Profile ---
+        binding.viewSellerProfile.setOnClickListener {
+            val intent = Intent(this, ViewSellerProfile::class.java)
+            intent.putExtra("sellerEmail", sellerEmail)
+            startActivity(intent)
+        }
+
+        // --- Submit Review ---
+        binding.submitReviewBtn.setOnClickListener {
+            val reviewText = binding.reviewInput.text.toString().trim()
+            if (reviewText.isEmpty()) {
+                Toast.makeText(this, "Please write a review", Toast.LENGTH_SHORT).show()
+            } else {
+                addReviewToList(reviewText)
+                binding.reviewInput.text.clear()
+                Toast.makeText(this, "Review submitted!", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // Edge-to-edge padding
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+
+    private fun addReviewToList(reviewText: String) {
+        val reviewContainer = binding.reviewListContainer
+        val newReview = TextView(this)
+        newReview.text = "• $reviewText"
+        newReview.textSize = 16f
+        newReview.setPadding(8, 8, 8, 8)
+        newReview.setTextColor(resources.getColor(android.R.color.black, null))
+        reviewContainer.addView(newReview)
     }
 }

@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Foodigo">
         <activity
+            android:name=".SellerMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewSellerProfile"
+            android:exported="false" />
+        <activity
             android:name="com.example.seller.OrderDispatchPage"
             android:exported="false" />
         <activity

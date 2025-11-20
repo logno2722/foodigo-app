@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
 
         })
         val foodName = listOf("Rice", "Lentil Soup", "momo", "item","Macaroni and Cheese", "Macaroni")
-        val Price = listOf("$5", "$7", "$8", "$10","$20","$5")
+        val Price = listOf("500 TK", "700 TK", "800 TK", "100 TK","200 TK","500 TK")
         val popularFoodImages = listOf(R.drawable.menu1 ,R.drawable.menu2,R.drawable.menu3 , R.drawable.menu4 ,R.drawable.menu1 ,R.drawable.menu1)
 
         // --- FIX Applied Here ---
